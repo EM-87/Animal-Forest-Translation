@@ -26,3 +26,11 @@ carpet	18	a	bath tile floor
 wall	18	a	bathhouse wall
 carpet	26	an	old board floor
 wall	26	a	shabby mud wall
+# Two paintings on whose easels the GameCube put other pictures, so that its names at their numbers are
+# those pictures': the cartridge's are a figure crying out under a red sky and a white board ruled in black
+# with blocks of colour. Ours, from the cartridge's names (the fearsome one, the novel one).
+ftr	172	a	scary painting
+ftr	173	a	novel painting
+# A figure of a raccoon dog that the GameCube's game no longer has: its table keeps an unfinished name for
+# it (a misspelt word and a cut one). Ours, from the cartridge's name.
+ftr	884	a	raccoon figurine

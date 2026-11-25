@@ -292,6 +292,72 @@ def comma_space(tokens):
     return out
 
 
+# The plaza's building. The cartridge draws a shrine there; the GameCube's game has a well in its place, and
+# its English names the well: by two words (SHRINE), or by the second alone after a word that points at it
+# (SHRINE_BARE: the New Year's wishes, the building's own talk). The draft names what the cartridge draws
+# (reference/NOTES.md, "The shrine and two paintings"). SHRINE_LETTERS: the same in the letters, by bank.
+SHRINE = frozenset((2782, 2792, 2961, 2974, 4388, 4390, 4396, 4494, 4495, 4506, 4517, 4519, 4528, 5961, 6125, 6126,
+                    6138, 7689, 7723, 7742, 9966, 9967, 9976, 9977, 9989, 10001, 10162, 10170, 10172, 10174, 10214,
+                    10246, 10247, 10257, 10365))
+SHRINE_BARE = frozenset((2952, 4390, 6126, 7704, 7710, 7719, 7720, 7739, 7743, 7759, 7762, 10163))
+SHRINE_LETTERS = {"mail_body": frozenset((427, 438, 446, 458))}
+SHRINE_TWO = re.compile(r"([Ww])ishing(\s+)[Ww]ell([.,!?]*)( ?)")
+SHRINE_ONE = re.compile(r"\b([Tt]he|[Tt]his|[Tt]hat|[Aa])(\s+)well\b(?!-)")
+SHRINE_POINTS = re.compile(r"\b(?:[Tt]he|[Tt]his|[Tt]hat|[Aa])\s*$")
+SHRINE_STARTS = re.compile(r"^(\s*)well\b(?!-)")
+
+
+def shrine(tokens):
+    """The tokens with the GameCube's two words for the plaza's building made the cartridge's one, their
+    capital kept. Where a line ended between the two it ends after the one, and what followed begins the next
+    line. ValueError if the text never has the two."""
+    out, done = list(tokens), 0
+
+    def put(m):
+        word = ("S" if m.group(1) == "W" else "s") + "hrine" + m.group(3)
+        return word + "\n" if "\n" in m.group(2) else word + m.group(4)
+    for i, t in enumerate(out):
+        if t[0] != "t":
+            continue
+        text, n = SHRINE_TWO.subn(put, t[1])
+        if not n:
+            continue
+        done += n
+        out[i] = ("t", text)
+        if text.endswith("\n") and not t[1].endswith("\n"):      # the line's end is this text's end now
+            for j in range(i + 1, len(out)):
+                if out[j][0] == "t":
+                    if out[j][1].startswith(" "):
+                        out[j] = ("t", out[j][1][1:])
+                    break
+    if not done:
+        raise ValueError("the plaza's building is not named by its two words")
+    return out
+
+
+def shrine_bare(tokens):
+    """The tokens with the second of those words, alone after the, this, that or a (a line's end, a pause or
+    a colour between them or not), made the cartridge's word. ValueError if the text has none."""
+    out, done, points = list(tokens), 0, False
+    for i, t in enumerate(out):
+        if t[0] != "t":
+            if t[1] in PRINTED_TAIL:                    # something printed between the two: another thing
+                points = False
+            continue
+        text = t[1]
+        if points:
+            text, n = SHRINE_STARTS.subn(lambda m: m.group(1) + "shrine", text)
+            done += n
+        text, n = SHRINE_ONE.subn(lambda m: m.group(1) + m.group(2) + "shrine", text)
+        done += n
+        if text.strip():
+            points = SHRINE_POINTS.search(text) is not None
+        out[i] = ("t", text)
+    if not done:
+        raise ValueError("the plaza's building is not named by its second word after a word that points at it")
+    return out
+
+
 # The draft's numbered rules for official text, in the order they are applied: (numbers, rule, note, count)
 OFFICIAL_RULES = (
     (DOUBLED, undouble, "a word the GameCube printed twice in a row printed once (DOUBLED)",
@@ -304,7 +370,15 @@ OFFICIAL_RULES = (
      "official, a sentence's capital put"),
     (COMMA_RUN, comma_space, "the space put after a comma the GameCube ran into a printed string (COMMA_RUN)",
      "official, a comma's space put"),
+    (SHRINE, shrine, "the plaza's building named as the cartridge draws it, a shrine (SHRINE)",
+     "official, the plaza's building named a shrine"),
+    (SHRINE_BARE, shrine_bare, "the plaza's building, named by one word, named a shrine (SHRINE_BARE)",
+     "official, the plaza's building named a shrine"),
 )
+# The letters' numbered rules, by bank: (numbers, rule, note, count), as OFFICIAL_RULES
+LETTER_RULES = {bank: ((numbers, shrine, "the plaza's building named as the cartridge draws it, a shrine "
+                        "(SHRINE_LETTERS)", "official, the plaza's building named a shrine"),)
+                for bank, numbers in SHRINE_LETTERS.items()}
 
 
 LETTER_FIRST = {}
@@ -1038,9 +1112,9 @@ def compile_letters(paths, text_path, index_path, cols=32, lines=4):
     return text, index
 
 
-def draft(n64_path, gc_path, align_path, out_path, overrides, remap=None):
+def draft(n64_path, gc_path, align_path, out_path, overrides, remap=None, bank="message"):
     """remap: {number: the GameCube's number} (LETTER_REMAP or STRING_REMAP for a bank drafted by number,
-    MESSAGE_REMAP);
+    MESSAGE_REMAP); bank: the bank's name, for its numbered rules (OFFICIAL_RULES, LETTER_RULES);
     an official message takes the cartridge's codes that steer the game (mend), or where it cannot, the
     message is the cartridge's Japanese, to translate."""
     remap = remap or {}
@@ -1099,12 +1173,16 @@ def draft(n64_path, gc_path, align_path, out_path, overrides, remap=None):
                 if why:
                     note += "#: the cartridge's codes that steer the game put back: %s\n" % why
                     counts["official, the cartridge's codes put back"] += 1
-                if remap is MESSAGE_REMAP:
-                    for numbers, rule, what, count in OFFICIAL_RULES:
-                        if n in numbers:
-                            tokens = rule(tokens)
-                            note += "#: %s\n" % what
-                            counts[count] += 1
+                for numbers, rule, what, count in (OFFICIAL_RULES if remap is MESSAGE_REMAP else
+                                                   LETTER_RULES.get(bank, ())):
+                    if n in numbers:
+                        tokens = rule(tokens)
+                        note += "#: %s\n" % what
+                        counts[count] += 1
+                if (remap is MESSAGE_REMAP or bank in LETTER_BANKS) and any(
+                        t[0] == "t" and SHRINE_TWO.search(t[1]) for t in tokens):
+                    raise SystemExit("af_text: %s %d: official text that names the plaza's building as the "
+                                     "GameCube's game has it, and no rule for it (SHRINE)" % (bank, n))
                 unfilled = filled(tokens) - filled(n64[n])
                 if unfilled:
                     note += "#: TODO adapt: the GameCube's text prints %s, which the cartridge does not fill here\n" \
@@ -1166,7 +1244,8 @@ def main(argv):
     cmd = args[0]
     if cmd == "draft":
         draft(args[1], args[2], args[3], args[4], overrides,
-              MESSAGE_REMAP if bank == "message" else STRING_REMAP if bank == "string" else LETTER_REMAP.get(bank))
+              MESSAGE_REMAP if bank == "message" else STRING_REMAP if bank == "string" else LETTER_REMAP.get(bank),
+              bank)
         return 0
     messages, laid_numbers = load_bank(args[1]), set()
     for path in overrides:

@@ -796,7 +796,7 @@ meant at all,<PAUSE 0c>
 Sports Day, right?<PAUSE 0f>
 <STR_COUNTRYNAME> has a
 sports fair, too,<PAUSE 06> <STR_TAIL>!<BTN>
-<MSGCLEAR>It's at the <COLORCHARS 4ba0000c>wishing well<PAUSE 0f>
+<MSGCLEAR>It's at the <COLORCHARS 4ba00006>shrine<PAUSE 0f>
 plaza, I hear, so why
 don't you take a peek,
 <STR_PLAYERNAME>? <PAUSE 06><CAPTIALIZE><STR_TAIL>.<BTN><DEMONPC0 000015>
@@ -839,7 +839,7 @@ and Sports Day! <PAUSE 08><CAPTIALIZE><STR_TAIL>!
 <MSGCLEAR>That's the day of the
 fall sports fair!<PAUSE 0c>
 It starts at 9 a.m.<PAUSE 04>
-at the wishing well plaza.
+at the shrine plaza.
 <BTN>
 <MSGCLEAR>Of course,<PAUSE 06> you'll
 take part too, won't you?!<PAUSE 08>
@@ -862,7 +862,7 @@ of October,<PAUSE 06>
 <BTN>
 <MSGCLEAR><DEMONPC0 000015>Anyway, that day,<PAUSE 0c>
 come by the
-wishing well plaza
+shrine plaza
 at least once,<PAUSE 08> <STR_PLAYERNAME>.
 <BTN>
 <MSGCLEAR><DEMONPC0 00000e>You'll get to see
@@ -885,7 +885,7 @@ so you gotta come!<PAUSE 06>
 <BTN>
 <MSGCLEAR><DEMONPC0 000015>It's on April 20th!<PAUSE 0c>
 I'll be waitin' at the
-wishing well plaza!
+shrine plaza!
 <PAUSE 06><CAPTIALIZE><STR_TAIL>!
 <MSGEND>
 

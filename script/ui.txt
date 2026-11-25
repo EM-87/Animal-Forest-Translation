@@ -82,9 +82,11 @@ TG_KESU	Erase
 TG_HONTONI	Are you
 TG_IIDESUKA	sure?
 #
-# The map (map_ovl): the labels the GameCube breaks over two lines, on the cartridge's one.
+# The map (map_ovl): the police box's and the station's labels, which the GameCube breaks over two lines, on
+# the cartridge's one; and the plaza's building as the cartridge draws it, a shrine (the GameCube's game has a
+# well there, and its label names the well).
 MP_POLICE	Police Station
-MP_SHRINE	Wishing Well
+MP_SHRINE	Shrine
 MP_STATION	Train Station
 #
 # The bulletin board (ovl__00797A50): which post it shows, the menu's number (two cells, a space before a

@@ -3,8 +3,9 @@
 # fireworks come in August), an event of the GameCube's own (a meteor shower for the harvest moon, its
 # Groundhog Day for White Day), a game the cartridge's villagers don't have (the GameCube's has more NES
 # games), a winter's talk turned into another, a price a villager can pay read as one he cannot, and New
-# Year's Day's announcement, whose saying the 2010 patch's English leaves out and whose wishing well it
-# calls a shrine (the GameCube's English, which has no counterpart for it, says wishing well elsewhere).
+# Year's Day's two announcements: one whose saying the 2010 patch's English leaves out, one in which it
+# names the GameCube's well (the cartridge draws a shrine in the plaza, and the build names it so:
+# af_text.SHRINE).
 # The second review's: things the GameCube has and the cartridge has not (a tailor's shop and its
 # patterns, a lighthouse, a ghost), a string the GameCube's English prints and the cartridge never fills
 # here, a minute read from the clock where the cartridge fills a number of its own, the game's name as
@@ -60,12 +61,20 @@ won't you?
 <MSGEND>
 
 ## 5965
-#: New Year's Day's announcement on arrival: a year's plans start on its first day; the first wish at the wishing well
+#: New Year's Day's announcement on arrival: a year's plans start on its first day; the first wish at the shrine
 <TEXTCOLOR 282d5a>A year's plans are made
 <TEXTCOLOR 282d5a>on its very first day.<PAUSE 0f>
 <TEXTCOLOR 282d5a>Go make your <COLORCHARS 9114a50a>first wish
-<TEXTCOLOR 282d5a>at the wishing well!
+<TEXTCOLOR 282d5a>at the shrine!
 <MSGTIMEEND 50>
+
+## 6051
+#: New Year's Day's other announcement: has the year's first visit been made? In need one prays; the shrine is open all year
+<TEXTCOLOR 282d5a>Have you made your
+<TEXTCOLOR 282d5a><COLORCHARS 9114a512>first shrine visit yet?
+<TEXTCOLOR 282d5a>In a pinch, folks pray:
+<TEXTCOLOR 282d5a>the shrine never closes.
+<MSGTIMEEND 64>
 
 ## 6131
 #: a peppy villager on White Day's cookies

@@ -1047,9 +1047,33 @@ class Script(unittest.TestCase):
                          "So, <PAUSE 08><STR_TAIL>! Hey, <STR_PLAYERNAME>, <STR_TAIL>\n<MSGEND>")
         with self.assertRaises(ValueError):
             af_text.comma_space(msgbank.parse("So, <STR_TAIL>,<PAUSE 08> then\n<MSGEND>"))
+        # the plaza's building named as the cartridge draws it (af_text.SHRINE, SHRINE_BARE): the GameCube's two
+        # words made one with their capital kept, a line's end between them put after it; the second word
+        # alone after a word that points at it, a colour between them or not, a printed string between them
+        # another thing
+        self.assertEqual(rule(af_text.shrine, "At the wishing well plaza,<PAUSE 08> the Wishing\nWell again. "
+                                              "Go to the wishing\nwell<PAUSE 08> now!\n<MSGEND>"),
+                         "At the shrine plaza,<PAUSE 08> the Shrine\nagain. Go to the shrine\n<PAUSE 08>now!\n<MSGEND>")
+        with self.assertRaises(ValueError):
+            af_text.shrine(msgbank.parse("All is well, wishing you well.\n<MSGEND>"))
+        self.assertEqual(rule(af_text.shrine_bare, "A wish at the well? Well, good luck! This\n<TEXTCOLOR ffebeb>well "
+                                                   "hears it.\n<MSGEND>"),
+                         "A wish at the shrine? Well, good luck! This\n<TEXTCOLOR ffebeb>shrine hears it.\n<MSGEND>")
+        with self.assertRaises(ValueError):
+            af_text.shrine_bare(msgbank.parse("Sleep well. Oh well, the <STR_ITEM0> well is deep, a well-wisher.\n<MSGEND>"))
         # each numbered rule's numbers are messages, and a rule applies to each of its own
         for numbers, f, what, count in af_text.OFFICIAL_RULES:
             self.assertTrue(numbers and all(0 <= n < af_text.N64_BANKS["message"][2] for n in numbers), what)
+        for bank, rules in af_text.LETTER_RULES.items():
+            for numbers, f, what, count in rules:
+                self.assertTrue(numbers and all(0 <= n < af_text.letter_count(bank) for n in numbers), what)
+        # our own text names the building as the cartridge draws it: no file of ours has the GameCube's two words
+        for root, _, names in os.walk(os.path.join(HERE, "..", "script")):
+            for name in names:
+                body = "\n".join(line for line in open(os.path.join(root, name), encoding="utf-8").read().splitlines()
+                                 if not line.startswith("#"))
+                flat = re.sub(r"\s+", " ", re.sub(r"<[^>]*>", " ", body))
+                self.assertIsNone(af_text.SHRINE_TWO.search(flat), name)
         # a line that ends in a dash after a letter goes on in the next line's first word, no space between,
         # moved on or filled anew; a dash after a code that prints a string, or alone, is a word's end
         self.assertEqual(lay("aaaa bbbb ccー<PAUSE 06>\ndd e\n<MSGEND>"), "aaaa bbbb\nccー<PAUSE 06>dd e\n<MSGEND>")
@@ -1963,11 +1987,16 @@ class MenusWords(unittest.TestCase):
         self.assertEqual(max(len(w) for w in af_items.ARTICLE_WORDS) + af_items.GC_NAME_LEN, 21)
         self.assertLessEqual(21, af_items.TEXT_MAX)                 # every name of the GameCube's fits with any
         # ours (script/items.txt): NAME_MAX characters at most, and a or an as the first sound asks
-        for (kind, i), (text, art) in af_items.read_names(os.path.join(HERE, "..", "script", "items.txt")).items():
+        own = af_items.read_names(os.path.join(HERE, "..", "script", "items.txt"))
+        for (kind, i), (text, art) in own.items():
             self.assertLessEqual(len(text), af_items.NAME_MAX, (kind, i))
             self.assertLessEqual(len(af_items.ARTICLE_WORDS[art]) + len(text), af_items.TEXT_MAX, (kind, i))
             if art in (a, an):
                 self.assertEqual(af_items.sound_article(text), art, (kind, i, text))
+        # the two paintings the GameCube put other pictures on, and the figure its table has an unfinished name
+        # for: ours, each another name
+        self.assertLessEqual({("ftr", 172), ("ftr", 173), ("ftr", 884)}, set(own))
+        self.assertEqual(len({text for text, _ in own.values()}), len(own))
 
     def test_a_reply_prints_only_what_the_game_fills(self):
         # a villager's reply (mNpc_SetRemailFreeString): free strings 0 to 13 for every reply, 14 and 15 only for
