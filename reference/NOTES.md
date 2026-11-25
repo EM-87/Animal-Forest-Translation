@@ -6015,6 +6015,29 @@ report, and what the flashcart's own documents say.
   lives in the cartridge's memory and is fetched with `download save`.
   `--direct` skips the flashcart's boot loader, which its documents
   keep for a boot code of one's own; the ROM needs no such thing.
+- **Where the SummerCart64 keeps the game** (its README and memory
+  map, read on that day). The ROM is in its 64 MiB of SDRAM, and the
+  Flash RAM's 128 KiB are that memory's end: neither outlasts a
+  power-off, so the ROM is read from the SD card at every power-on
+  (the menu does it by itself for a ROM set to autoload) and a save is
+  written back to the card's file after the game writes it, with no
+  reset; the board's light blinks unevenly while the card is read or
+  written and when a save's write-back has ended. Its 16 MiB of flash
+  are the boot loader's and, for a ROM longer than 64 MiB, the 14 MiB
+  past them. The clock has a battery. It does all this game asks; with
+  the card out there is no game in it.
+- **Other cartridges** (looked for on 2026-11-12 and on 2026-11-25;
+  none tried). The clock is the rare part: no board for one game's ROM
+  was found for sale with it. The Brutzelkarte (jago85's, open
+  hardware; its README): 64 MiB of flash for ROMs, a ROM written once
+  starting "as fast as the original module" with nothing to choose,
+  256 KiB of battery-backed memory for saves with Flash RAM of 1 Mbit
+  among the kinds it emulates, and a clock "only used by Animal
+  Forest"; it is to be built, and its README says nothing of the
+  clock's battery. The EverDrive-64 X7 (its distributor's listing, as
+  a search gave it): Flash RAM and a clock, behind a menu and a card
+  as the SummerCart64. The cartridge's own board has the clock and the
+  Flash RAM with a ROM of 16 MiB, and the en ROM is 24.
 
 ## The repository
 
@@ -6055,9 +6078,10 @@ metadata.
   user's own use, and never enters the repository (`build/`).
 - **Version 1.0.** The user took the ROM `ff8c3a5` makes (md5
   52c6b4fbadb0..., "The shrine and two paintings") as good: version
-  1.0, at commit `c3cef92` (the tag `v1.0` was made there, in the
-  clone it was built in; the session that made it may not push a tag,
-  so on GitHub it is the user's to create). `make dist NAFE_UPS=...`
+  1.0, at commit `c3cef92` (the tag `v1.0` is there: the session that
+  built it may not push a tag, and the user made it on GitHub on
+  2026-11-25, with a release of that name and no file attached).
+  `make dist NAFE_UPS=...`
   writes the release's files into
   `build/dist`, none of them committed: the `.bps` under the version's
   name with the version and the commit in its metadata (3,231,886
