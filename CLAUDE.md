@@ -1,4 +1,4 @@
-# Working in animal_forest_en/
+# Working in this repository (animal_forest_en)
 
 An English translation of Doubutsu no Mori (N64) built by recompiling the
 game from zeldaret/af, not by hex-patching the ROM. Read `README.md` for

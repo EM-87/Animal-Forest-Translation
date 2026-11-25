@@ -9,21 +9,11 @@ name: animal-forest-en
 
 on:
   push:
-    paths:
-      - "animal_forest_en/**"
-      - ".github/workflows/animal-forest-en.yml"
   pull_request:
-    paths:
-      - "animal_forest_en/**"
-      - ".github/workflows/animal-forest-en.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-
-defaults:
-  run:
-    working-directory: animal_forest_en
 
 jobs:
   tools:
