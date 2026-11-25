@@ -1663,7 +1663,8 @@ what goes in it: "The letters in the en build").
   the dump and the empty house (`mMP_label_str_*`, `akiya_str$483`, read
   8 bytes far); the police box, the shrine and the station, which it
   breaks over two lines and the cartridge draws on one, are ours in its
-  words. Each is left after the label's icon, in at most 6 cells (a
+  words (the shrine's is ours outright since "The shrine and two
+  paintings"). Each is left after the label's icon, in at most 6 cells (a
   name's). Two more strings ride along: a wrapped item's name in its tag
   (`func_8086FD3C_jp` copies it into the item's name, 10 characters, and
   draws it as far as `mMl_strlen` finds it; the GameCube's
@@ -3007,7 +3008,8 @@ what goes in it: "The letters in the en build").
   its Father's Day, meteor shower and a winter festival
   (`script/choice/events.txt`). Left as they are: talk at the events
   both games have, which the GameCube words its own way (a holiday season
-  for Christmas, a wishing well for the shrine's plaza).
+  for Christmas, a wishing well for the shrine's plaza; the well no
+  longer: "The shrine and two paintings").
 - **The GameCube's own things** (`things.txt`): its console's clock in the
   message for a stopped clock (the Game Pak's), a mayor and a museum,
   the island's boatman in a quiz's joke, spring cleaning (the cartridge's
@@ -4990,7 +4992,9 @@ the Controller Pak", below).
   and eight messages have the GameCube's English one. Both are ours
   now (`script/message/words.txt`, from the cartridge's text). Ours
   10275 had the shrine's square where 40 messages and 4 letters of the
-  GameCube's English have the wishing well. Left as they are: what the
+  GameCube's English have the wishing well (turned round since: the
+  cartridge draws a shrine, "The shrine and two paintings"). Left as
+  they are: what the
   GameCube's English itself words two ways (the police station of its
   messages and the police box of its letters; raffle tickets and,
   once, lottery tickets; the bulletin board and, once, a message
@@ -5712,6 +5716,130 @@ them.
   the seven games started on ares ("The NES"). The battery's other
   goals were not run again: nothing they hold the game to is in
   these eight records.
+
+## The shrine and two paintings (the GameCube's models held to the cartridge's)
+
+The user had seen the Famicom under the name of an NES ("The NES") and
+asked whether anything else in the game was out of place the same
+way. Nothing had ever held the GameCube's models to the cartridge's:
+the names had been compared name by name, and the clothes', the
+floors' and the walls' textures looked at ("The second review").
+
+- **How.** `tools/af_gc_models.py` (local, prints only). The
+  GameCube's lists draw the N64's vertices, and a model the two games
+  share has the same vertices but for a flag (bytes 6 and 7 of the 16:
+  0 in the cartridge's, 1 in the GameCube's). `furniture`: each of the
+  cartridge's 947 pieces against the GameCube's piece its name comes
+  from, through that piece's profile (the table of 1,266 pointers the
+  map puts under `ac_my_room.o`'s `furniture_quality`) and the vertex
+  arrays the profile reaches by the module's relocations. `world`:
+  every vertex array of the module, looked for in the cartridge's
+  files.
+- **The furniture.** 415 pieces have every vertex of the GameCube's
+  piece. 255 are the clothes' (their names are the clothes'). 159 were
+  not compared: the 127 gyroids and the 32 umbrellas shown as
+  furniture, whose objects their overlays name another way. 67 the
+  GameCube has its placeholder for (`iam_dummy`), and 51 have another
+  model.
+- **The 67.** Pieces the GameCube's game no longer has, though its
+  table of names still names them: a classroom's desks and chairs,
+  the road works' signs, fences and drums, the public bath's things,
+  the tatami room's (a tansu, a kotatsu, a hibachi, a screen, an
+  alcove, a hearth), the dharmas, the lucky cats, New Year's pine and
+  rice cakes. The cartridge has each with its own model, and the name
+  is the one the GameCube's English gave the same thing: read against
+  the cartridge's names again, one by one (`af_items.py pairs`). Six
+  of them are marked unused in the cartridge's own Japanese (39, 44,
+  45, 188, 197, 307). One name is unfinished there, a misspelt word
+  and a cut one, for a figure of a raccoon dog (884): ours now,
+  "raccoon figurine" (`script/items.txt`).
+- **Another model.** Of the 51, most are the same thing touched up
+  (nine in ten vertices the same). Looked at in the running game, put
+  in a room of the checks' town, were the ones with little or nothing
+  in common: the eight Famicoms (the NES); a desk and a table of one
+  set, remade as the same desk and table (211, 213); two cubbies of
+  the classroom (142, 143); a fish's tank (779); and three of the ten
+  paintings on easels (172, 173, 177).
+- **Two paintings.** On the easels of 172 and 173 the GameCube put
+  other pictures, and its names at those numbers are for them. The
+  cartridge's 172 is a figure crying out under a red sky, named the
+  fearsome painting in its Japanese; its 173 a white board ruled in
+  black with blocks of colour, the novel one. The build called the
+  first by the GameCube's name for a plain picture and the second by
+  its name for a frightening one. Ours now, from the cartridge's
+  names: "scary painting" and "novel painting"
+  (`script/items.txt`; the GameCube's table has both names too, at
+  two of its placeholders, 1142 and 1143). The picture of 177 is
+  another too (a seated woman in a yellow jersey, where the GameCube
+  has a maid pouring milk); the name's word fits either, and stays.
+- **The world.** 2,434 vertex arrays in the module: 1,273 whole in
+  the cartridge, 158 in part, 1,003 not there. Most of those are the
+  GameCube's own things (its ground, 245; a museum, a tailor's, a
+  lighthouse, an island, its new furniture, eight more fish and
+  insects of its own). Of the structures both games have: the police
+  box, the post office, the houses and the station's shadows are the
+  same in part; the fortune stall and the fireworks stalls are other
+  models, which was known ("Our own signs"); the cherry blossoms'
+  mats and a bridge are others, and no text describes them; and the
+  two arrays the GameCube's module calls the shrine's are not in the
+  cartridge at all.
+- **The shrine.** In the plaza the cartridge draws a shrine: a small
+  red hall under a dark tiled roof, a bell rope and an offering box
+  before it (looked at in the checks' town, block 5,5). The
+  GameCube's game has a well there, and its English names the well:
+  35 messages by two words, 12 by the second alone (the New Year's
+  wishes and the building's own talk), four notices of the board
+  (the letters' `mail_body` 427, 438, 446, 458), and the map's
+  label. Six messages of ours had followed it (2986, 4557, 5965,
+  10197, 10258, 10275: "The closing pass" had turned 10275 round to
+  match), and one came from the 2010 patch's English (6051), which
+  names the well too. So the villagers sent the player to a well
+  the town does not have. The user was asked, with the other two
+  ways beside it (the well's model from the disc, as with the NES:
+  the cartridge's actor is all asm, twenty functions, a summer and
+  a winter model and a shadow; or leaving it), and chose that the
+  text name what is drawn.
+- **The rule.** `tools/af_text.py`: `SHRINE` and `SHRINE_BARE`, two
+  more of the draft's numbered rules (`OFFICIAL_RULES`), and
+  `LETTER_RULES`, the letters' first. The two words become the one
+  with their capital kept; where a line ended between them it ends
+  after the one, and what followed begins the next line (6138, three
+  times in 9966, once in 10246). The second word alone is changed
+  after the, this, that or a, a line's end or a colour's code
+  between them or not (4390, 6126), in the twelve listed messages
+  only: seven others have the same two words for a sleep, a fall and
+  a saying. The draft counts 47 messages ruled so, and refuses any
+  official message or letter that names the well by its two words
+  with no rule for it. Ours by hand: the six, the map's label
+  ("Shrine": it has six cells), and 6051 from the cartridge's text
+  (the year's first visit; in need one prays; the shrine is open all
+  year). No text of ours has the two words (`make test`). What the
+  New Year's talk now says of the shrine is the cartridge's own
+  custom: a queue, coins thrown in, a wish.
+- **Left as they are.** The second fish is a deep-bodied carp in the
+  cartridge; the GameCube's English names it a trout and its game
+  drew the fish anew to match. Four messages and two strings speak
+  of a trout: the name stays the GameCube's. Five umbrellas have
+  another shape under names that are their patterns'. The talk at
+  Christmas keeps the GameCube's holiday season.
+- **Names of ours.** `script/items.txt` has 19 (the build counts 24
+  ours with the five names whose article it mends, and 1,679 the
+  GameCube's).
+- **The checks.** On the ROM `ff8c3a5` makes (md5 52c6b4fbadb0...;
+  the relink's line as before, `code_en` untouched: the banks and the
+  names' segment are data): `make test` (163), `emu-check` and
+  `emu-check-en`, `messages-check-en` (728 messages shown, 2,030
+  lines measured, no failure), `menus-check-en` (no failure: the
+  map's label where the cartridge's box has it, the names' records),
+  `letters-check-en`, `notice-check-en` (no failure: the board's
+  notices put up and measured), `psel-check-en` and `year-check-en`
+  (the 21 dates, New Year's Day's queue at the shrine among them, all
+  passed), as goals of one make; `make verify` (identical to the
+  cartridge); `make bps` (3,231,859 bytes; the dump patched gives the
+  ROM byte for byte). In the drafts as compiled no message, letter,
+  string or answer has the well's two words, and the twelve have the
+  one word no more. Not run again: the rest of "The battery after
+  the dealings", which this change gives nothing new to hold.
 
 ## Other emulators (ares, Project64, RetroArch, RMG and simple64)
 

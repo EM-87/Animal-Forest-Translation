@@ -505,6 +505,28 @@ juego que dice su nombre (su título y, en la primera, la partida tras
 pulsar START). Las pantallas de esos juegos ya estaban en inglés en la
 Famicom: en ellos no hay nada que traducir.
 
+A raíz de la NES se compararon todos los modelos de GameCube con los
+del cartucho (`tools/af_gc_models.py`, "The shrine and two paintings":
+cuando el modelo es el mismo, los dos juegos dibujan los mismos
+vértices). De los 947 muebles, 415 son idénticos. Otros 67 son muebles
+que el juego americano ya no tiene (un aula, las obras de la calle, los
+baños públicos, la sala de tatami, los daruma...): el cartucho los
+conserva con su modelo, y su nombre en inglés sigue en la tabla de
+GameCube, así que nombre y dibujo casan. De los pocos con otro modelo,
+dos eran un problema: dos cuadros en cuyos caballetes GameCube puso
+otras pinturas, de modo que el nombre que tomábamos era el de la
+pintura nueva (al cuadro de la figura que grita lo llamábamos como al
+cuadro corriente, y al de la cuadrícula de colores como al que da
+miedo). Ahora llevan nombre nuestro, traducido del japonés del
+cartucho. Y en el pueblo, lo único que el texto nombra y GameCube
+cambió es el edificio de la plaza: el cartucho dibuja un santuario y el
+juego americano tiene un pozo de los deseos, así que los vecinos
+citaban al jugador en un pozo que no existe. El texto dice ahora
+«shrine»: una regla por número de mensaje cambia el término en 47
+mensajes y 4 avisos oficiales, y los nuestros y la etiqueta del mapa
+se cambiaron a mano. Queda como está un pez que el cartucho dibuja
+como una carpa y el inglés de GameCube llama trucha.
+
 La pasada de pruebas del texto ("The official text's codes and the
 GameCube's own") encontró dos clases de fallo en el texto oficial. La
 primera: 688 mensajes de GameCube llevaban sus propios códigos, los que

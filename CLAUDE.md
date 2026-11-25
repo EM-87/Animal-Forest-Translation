@@ -143,7 +143,10 @@ the why and the state, `reference/NOTES.md` for what is verified.
   mends it by the message's number, never by its words
   (`af_text.OFFICIAL_RULES`: a word printed twice, a row of the map by
   the GameCube's letter, a birthday's two numbers, a sentence's capital,
-  a comma's space; NOTES, "The second review").
+  a comma's space; NOTES, "The second review"; and the plaza's
+  building named as the cartridge draws it, a shrine, in the messages
+  and, by `LETTER_RULES`, in four notices: NOTES, "The shrine and two
+  paintings").
 - `tools/af_font.py` — the en build's font, made from the user's dump at
   `make rom-en`: the GameCube's Latin letters and their widths (read from
   the disc by `make script` into `build/gc/gc_font.bin`), or without the
@@ -231,6 +234,12 @@ the why and the state, `reference/NOTES.md` for what is verified.
   tile at its TMEM address, texels and palette md5s, the texture block's
   LoadBlock row swap undone and redone (NOTES, "Our own furniture
   words").
+- `tools/af_gc_models.py` — the GameCube's models held to the
+  cartridge's, vertex by vertex (local, prints only): each piece of
+  furniture against the GameCube's piece its name comes from, and every
+  vertex array of the GameCube's module looked for in the cartridge's
+  files. Where a model is another, look at the thing in the game beside
+  its name (NOTES, "The shrine and two paintings").
 - `tools/af_gc_nes.py` — the GameCube's NES where the cartridge has its
   eight Famicoms (the seven with a game, the one on its disk drive), at
   `make rom-en` from the disc's foresta.rel (make script's): its three
@@ -559,7 +568,13 @@ the why and the state, `reference/NOTES.md` for what is verified.
   lighthouse, a ghost). A message can keep the cartridge's codes and
   still say another thing: the comparison by codes (`tools/af_align.py`)
   cannot see it. Read the Japanese beside it, and look at the texture
-  beside a name.
+  beside a name. And at the model: the plaza's shrine is a well in the
+  GameCube's game, whose English sent the player to a well the town
+  does not have, and two paintings are other pictures under the same
+  numbers; the names read alike and nobody had compared the drawings
+  until the user saw a Famicom called an NES. `tools/af_gc_models.py`
+  says which of the GameCube's models the cartridge has not (NOTES,
+  "The shrine and two paintings").
 - **A string of the bank longer than the buffer its loader gives it is
   cut, silently.** The cartridge's code loads a string into 4, 6 or 10
   bytes and hands those on; a letter's free string is 10. Before a string

@@ -42,6 +42,7 @@ import af_shiftcheck  # noqa: E402
 import af_text  # noqa: E402
 import af_items  # noqa: E402
 import af_ui  # noqa: E402
+import af_gc_models  # noqa: E402
 import af_gc_nes  # noqa: E402
 import af_gc_signs  # noqa: E402
 import af_menu_tex  # noqa: E402
@@ -1997,6 +1998,19 @@ class MenusWords(unittest.TestCase):
         # for: ours, each another name
         self.assertLessEqual({("ftr", 172), ("ftr", 173), ("ftr", 884)}, set(own))
         self.assertEqual(len({text for text, _ in own.values()}), len(own))
+
+    def test_models_are_compared_by_their_vertices_without_the_flag(self):
+        # tools/af_gc_models.py: a vertex of the GameCube's is the cartridge's but for bytes 6 and 7
+        v = bytes(range(16))
+        self.assertEqual(af_gc_models.same_vertex(v), v[:6] + v[8:])
+        self.assertEqual(af_gc_models.same_vertex(v[:6] + b"\0\1" + v[8:]), af_gc_models.same_vertex(v))
+        self.assertNotEqual(af_gc_models.same_vertex(v[:5] + b"\xff" + v[6:]), af_gc_models.same_vertex(v))
+        # the arrays are the names that end as the GameCube's vertex arrays do
+        for name, yes in (("int_x_v", True), ("obj_s_y_v2", True), ("aFD_culling_vtx", True),
+                          ("int_x_model", False), ("obj_s_valley", False)):
+            self.assertEqual(af_gc_models.is_vertices(name), yes, name)
+        self.assertEqual(af_gc_models.ranges([1, 2, 3, 7, 9, 10]), "1-3, 7, 9-10")
+        self.assertEqual(af_gc_models.ranges([]), "none")
 
     def test_a_reply_prints_only_what_the_game_fills(self):
         # a villager's reply (mNpc_SetRemailFreeString): free strings 0 to 13 for every reply, 14 and 15 only for
