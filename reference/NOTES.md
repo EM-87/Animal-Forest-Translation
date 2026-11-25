@@ -5870,7 +5870,8 @@ another repository (EM-87/Jeffrey_paradox, `claude/vigilant-johnson-hxmbst`)
 and moved to this one with its history: 122 commits, each made again
 with that directory as the root and the workflow where it was
 (`.github/workflows/`), the first of them with no parent. Held to the
-old ones one by one before the old branch was removed: the same tree
+old ones one by one before the pull request there was closed without
+a merge (the old branch is the user's to delete): the same tree
 (the directory's there, the root's here), the same workflow, author,
 committer, dates and message, the same order; and every blob and tree
 of the old commits' project is among this repository's objects. Nothing
