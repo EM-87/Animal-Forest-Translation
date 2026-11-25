@@ -2178,15 +2178,16 @@ what goes in it: "The letters in the en build").
   order, with items of its own added: a plant after the first (the
   plants shift by one), and in the furniture, after the clothes, its
   mannequins, more insects, fish and umbrellas' patterns (blocks of 8),
-  and more games after the cartridge's Famicoms (which all share one of
-  its names here, its name for the drive's piece: "The NES"). The
+  and twelve more games after the cartridge's seven Famicoms, which
+  take the names of its first seven games' pieces as the drive's takes
+  the name of the piece after the nineteen ("The NES"). The
   clothes the cartridge numbers as furniture (491 to
   745) take the clothes' names, as `mRmTp_FtrItemNo2Item1ItemNo` reads
   them; a bag of money among the other things takes the money's. Of the
-  cartridge's 1,703 names (947 pieces of furniture), 1,696 are the
-  GameCube's and 7 are ours (`script/items.txt`: the errands' letter,
+  cartridge's 1,703 names (947 pieces of furniture), 1,697 are the
+  GameCube's and 6 are ours (`script/items.txt`: the errands' letter,
   cloth and money, a fortune slip, the town's map, the empty kind's one
-  name, the Famicom's disk drive), each checked against the cartridge's
+  name), each checked against the cartridge's
   name kind by kind (`af_items.py pairs`, local, prints only).
 - **Why a token.** The GameCube's names run to 16 characters (739 of
   its 1,024 furniture names are longer than 10), and the buffers the
@@ -5508,20 +5509,27 @@ the user's disc at build time (`tools/af_gc_nes.py`, `make rom-en`).
   made in software from an object's own list (by hand) shows the same.
   The eight objects are pinned by their md5 in the tool, which refuses
   a disc that makes others.
-- **The drive's name and page.** The cartridge has one name for the
-  seven and another for the drive. The GameCube names each of its
-  games' pieces after the game (nineteen of them, the cartridge's
-  seven first) and the drive's piece "NES": its furniture names 874
-  to 892 and 893, and its table of profiles has `iam_famicom_common`
-  in those nineteen places and `iam_kob_disksystem8` in the 893rd
-  (by hand: the module's relocations into the table the map calls
-  `furniture_quality`, read with `af_gc_nes.Module`; a third profile,
-  `iam_tak_nes01`, is its piece 1184, past the cartridge's). Here
-  the seven have that one name (`af_items.FTR_SAME`: one name for
-  seven, as in the cartridge) and the drive's is ours for what is
-  drawn, an NES with no game on it: "empty NES" (`script/items.txt`;
-  "disk system" while the cartridge's own drawing stood, and in the
-  builds with the NES before this one). The drive's page with nothing
+- **The eight names, and the drive's page.** The cartridge has one
+  name for the seven and another for the drive. The GameCube names
+  each of its games' pieces after the game (nineteen of them, the
+  cartridge's seven first) and the drive's piece "NES": its furniture
+  names 874 to 892 and 893, and its table of profiles has
+  `iam_famicom_common` in those nineteen places and
+  `iam_kob_disksystem8` in the 893rd (by hand: the module's
+  relocations into the table the map calls `furniture_quality`, read
+  with `af_gc_nes.Module`; a third profile, `iam_tak_nes01`, is its
+  piece 1184, past the cartridge's). Here the eight are named as the
+  GameCube names them (`af_items.FTR_BLOCKS`: the cartridge's 842 to
+  848 are its 874 to 880, the cartridge's 849 its 893): the seven
+  each after the game in its box, with no article as the GameCube
+  has them, and the drive's after the console, which is what is
+  drawn there, an NES with no game on it. A piece's name and the game
+  it starts agree by "Which game a piece is", above. (The builds
+  before had other names: the seven shared the GameCube's name for
+  the drive's piece, one name for seven as in the cartridge, and the
+  drive's was ours, "disk system" while the cartridge's own drawing
+  stood and "empty NES" in the first build with the NES; the user
+  asked for the GameCube's way.) The drive's page with nothing
   to play (0x2B69,
   ours: the GameCube has no text under that number) named the disk
   system and its disks and now names the NES and the Game Pak it
@@ -5542,6 +5550,22 @@ the user's disc at build time (`tools/af_gc_nes.py`, `make rom-en`).
   (the build before this change does the same: tried on it). No check
   has ever played a game of the console; what is checked is the road
   to its start.
+- **A game started, on ares (by hand).** ares can run VI fields
+  whatever the game does (`emu/ares64.py`, `vis`), so the console's
+  emulator can be watched there. The check's saved town with the
+  eight pieces in the first home, powered on in ares on `37edba8`'s
+  ROM, the player walked in at the door and put before a piece, A and
+  yes: for each of the seven the game's number is handed on (1 to 7
+  for 842 to 848), the picture becomes the console's and a game comes
+  up, the one the piece is named after (the first by its title and,
+  after START, its first board; the others by their titles or by the
+  play they show of themselves a while after). The games' own screens
+  are in English, as they were on the Famicom: there is nothing in
+  them to translate. In the console's emulator the game's frame
+  counter steps at every field (60 a second), so ares's frames go on
+  there. The drive's piece gives its page and hands no number on. A
+  look by hand, in two runs (one piece, then the other six from a
+  state kept in the room); nothing of the games' screens is kept.
 - **Without the disc's files** the eight stay the cartridge's
   Famicoms and the segment is 16 empty bytes.
 
@@ -5671,6 +5695,23 @@ them.
   that held the game to one of them was mended to hold it to what the
   game does (above; and "The town's dealings, played": the mailbox's
   corner, the raffle's draws, a sale past the pocketbook's limit).
+- **After it: the eight names.** The eight pieces' names became the
+  GameCube's after this battery ("The NES"). The ROM is `37edba8`'s,
+  md5 a4e12f6e2f08...: of what the build makes, the names' records of
+  the eight pieces differ from the battery's (89 bytes of the names'
+  segment: the tool of the commit before run again and its records
+  held to the new ones), the names' include and the catchphrases'
+  tokens are the same, and so the code is. Run on it: `make test`
+  (162), `emu-check` and `emu-check-en`, `psel-check-en`,
+  `signs-check-en` (0 failures: the eight pieces in the ROM and in
+  the game, each one's page), `menus-check-en` (0 failures: the
+  names' tokens and records), `make verify` (identical to the
+  cartridge) and `make bps` (3,232,179 bytes again; the dump patched
+  gives the ROM byte for byte). By hand: three of the names on the
+  pockets' tag (the drive's, the first game's and the fourth's), and
+  the seven games started on ares ("The NES"). The battery's other
+  goals were not run again: nothing they hold the game to is in
+  these eight records.
 
 ## Other emulators (ares, Project64, RetroArch, RMG and simple64)
 

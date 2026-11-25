@@ -482,9 +482,10 @@ los triángulos a cinco bits por vértice y guarda las texturas en
 teselas), y de cada mueble sale un bloque con la consola, sus dos
 mandos y, encima, la caja del juego con su etiqueta; el de la unidad
 de disco es una NES sin juego, como en GameCube, y por eso ya no se
-llama «disk system»: su nombre es «empty NES» (las siete con juego
-siguen siendo «NES», un solo nombre para las siete como en el
-cartucho) y su mensaje dice que falta un Game Pak, no los discos.
+llama «disk system»: su nombre es «NES», el que le da GameCube, y
+las siete con juego llevan cada una el nombre de su juego, también
+como en GameCube (el cartucho tenía un solo nombre para las siete);
+su mensaje dice que falta un Game Pak, no los discos.
 Cada bloque ocupa
 4.576 bytes y en el cartucho los ficheros de los muebles están a 4 KB
 uno de otro, así que los ocho van en un segmento propio al final de la
@@ -498,7 +499,11 @@ bloques cargados enteros, la pregunta de cada mueble y el número de
 juego que se entrega al emulador del cartucho. Ahí se detiene: el
 emulador de NES del cartucho usa tareas que nuestro emulador de
 pruebas no cuenta como imágenes, así que ninguna prueba ha jugado
-nunca a uno de sus juegos.
+nunca a uno de sus juegos. A mano, en ares (el segundo emulador), sí:
+con las ocho consolas en la casa, cada una de las siete arranca el
+juego que dice su nombre (su título y, en la primera, la partida tras
+pulsar START). Las pantallas de esos juegos ya estaban en inglés en la
+Famicom: en ellos no hay nada que traducir.
 
 La pasada de pruebas del texto ("The official text's codes and the
 GameCube's own") encontró dos clases de fallo en el texto oficial. La

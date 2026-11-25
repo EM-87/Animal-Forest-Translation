@@ -906,7 +906,10 @@ the why and the state, `reference/NOTES.md` for what is verified.
   (the cartridge's road too: tried on a build before the NES). A check
   that goes there reads what it wants before that yes's last page ends
   (the game's number at `common_data` + 0x109F8, a frame at a time)
-  and leaves (`tests/emu_signs.py`, `nes_visit`).
+  and leaves (`tests/emu_signs.py`, `nes_visit`). ares goes on there
+  (the game's frame counter steps at every field, and `Ares64.vis`
+  runs fields whatever the game does): the seven games were started
+  on it by hand (NOTES, "The NES").
 - **mupen64plus starts once per process.** A second `N64()` in the same
   process fails at PluginStartup (error 2): a check that powers on more
   than once runs each in a process of its own (`emu_save.py --boot`,
