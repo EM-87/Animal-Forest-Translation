@@ -6029,8 +6029,11 @@ metadata.
   2010 patch's labels and messages), as the ROM does: it is for the
   user's own use, and never enters the repository (`build/`).
 - **Version 1.0.** The user took the ROM `ff8c3a5` makes (md5
-  52c6b4fbadb0..., "The shrine and two paintings") as good: the tag
-  `v1.0`. `make dist NAFE_UPS=...` writes the release's files into
+  52c6b4fbadb0..., "The shrine and two paintings") as good: version
+  1.0, at commit `c3cef92` (the tag `v1.0` was made there, in the
+  clone it was built in; the session that made it may not push a tag,
+  so on GitHub it is the user's to create). `make dist NAFE_UPS=...`
+  writes the release's files into
   `build/dist`, none of them committed: the `.bps` under the version's
   name with the version and the commit in its metadata (3,231,886
   bytes), a sealed patch and a manifest (both ROMs' sizes and hashes,
