@@ -5991,6 +5991,31 @@ floors' and the walls' textures looked at ("The second review").
   angrylion and ares draw it green: those shots were of different
   demos.)
 
+## On a console
+
+Nothing in this section was measured by a check: it is the user's
+report, and what the flashcart's own documents say.
+
+- **The report** (2026-11-25). Version 1.0's ROM on a Nintendo 64, from
+  a SummerCart64: it starts and plays, with nothing found wrong. Saving
+  across power-offs and the clock across days were still to be tried
+  when this was written; so was a trip with a Controller Pak.
+- **What the ROM asks of a cartridge.** 24 MiB of ROM (the cartridge's
+  16 and the room code was moved into), 1 Mbit of Flash RAM, the
+  real-time clock with its battery, and the boot the cartridge has (its
+  own boot code, the header's checksums made anew by the build). The
+  ROM keeps the cartridge's ID (NAFJ), by which a flashcart's menu that
+  knows the game sets its save.
+- **The SummerCart64** (its documents, read on that day). From the SD
+  card: its menu's file (`sc64menu.n64`) in the card's root, the ROM in
+  any folder, the save written by itself beside the ROM
+  (`saves/<name>.sav`); the menu sets the save by the game's ID and
+  lets a ROM's save and TV type be set by hand, and the clock is set
+  from the file browser. Over USB (`sc64deployer upload`) the save
+  lives in the cartridge's memory and is fetched with `download save`.
+  `--direct` skips the flashcart's boot loader, which its documents
+  keep for a boot code of one's own; the ROM needs no such thing.
+
 ## The repository
 
 The project began as a directory, `animal_forest_en/`, on a branch of

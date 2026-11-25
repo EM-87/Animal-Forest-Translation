@@ -6,8 +6,9 @@ instead of patching the ROM by hand.
 
 Version 1.0. Everything the game shows is in English: the dialogue, the
 answers, the letters, the menus, the items' names, the signs on the
-buildings. It has been played and measured on emulators; it has not yet been
-run on a real console.
+buildings. It has been played and measured on emulators, and it runs on a
+real console from a SummerCart64: a first report, with saving and the clock
+still being tried there over days.
 
 *En español, con toda la historia del proyecto: [README.es.md](README.es.md).
 The verified facts, with their sources: [reference/NOTES.md](reference/NOTES.md).*
@@ -138,6 +139,8 @@ pass one on is for whoever made it to decide.
   a Controller Pak for trips. The ROM keeps the cartridge's ID (NAFJ), so an
   emulator or a flash cartridge that knows the game by its ID sets these by
   itself.
+- On a console it has been run from a SummerCart64 (NOTES, "On a
+  console").
 - Played here on mupen64plus (with angrylion's renderer), ares, Project64,
   RetroArch (Mupen64Plus-Next), RMG and simple64: NOTES, "Other emulators",
   says what each needs.
