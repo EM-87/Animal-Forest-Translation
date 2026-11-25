@@ -1,0 +1,125 @@
+# The project's first 122 commits: the hash each had in the repository it began in (EM-87/Jeffrey_paradox,
+# branch claude/vigilant-johnson-hxmbst, its directory animal_forest_en/) and the hash it has here, where that
+# directory is the root (reference/NOTES.md, "The repository"). Oldest first; old hash, hash here, subject.
+a09fe1afdf45acd90b3e33c92a4f1c71226aad49	6df592e7615d3b0686a9d7de7498828cfd6f0bad	Animal Forest (N64) in English: the decomp rebuilds the cartridge, and a headless N64
+ffd290b7797deab6bbda22bd31c21163b2cc33c1	5d8b747863f60c60f2387a39b541064e78cef5a0	Animal Forest: a scripted new game, and what the 2010 patch changed
+71ca227ededbdf29fa93b7375e02a83b45027d80	a43f45f01f8d972ad911a6519845b3c3e650e854	Animal Forest: the message system moves to C, and its buffers are measured
+68f4319b5ff50aeb2de952ff03dcdaea503ee38b	585c6605c5422644fef20bdacebef7d92a2f9299	Animal Forest: the message system's sound code in C, and why four functions would not match
+3dfc08716a7ac4f1d1d827ddd016326e01c2d8d5	71de5539beb1df951a7ee65a5f341767cc47d61e	Animal Forest: the message window's states in C, and a bench for matching
+7f2e311d518327a85b16a76f601ed9f4f9dd2fd3	9e4918713dd2b83ae39389c7df1b3a272f3ad1f1	Animal Forest: the cursor's control codes and the wait states in C
+e753db0c7fa81e393025f717b8a093d2e45b8898	c11fb9ed1c55a3a05e8d0c656f63028d9e5ebf2f	Animal Forest: the message system is C, from request to screen
+77339b5dfc2c4551d51a4c092df7af8d05784a2d	84e70cd805bd57abd85b73242d4d329baf458ea3	Animal Forest: the museum and mushroom code gets its own file
+5e1c7dd2a03d259192b2b13b25d392257b1f643c	ce0368c4979e3a7bb656c92915d8e3022140f246	Animal Forest: the 2010 patch's grown mail tables do not overflow
+254a227ec4b1fcb5338ec19ab2bfc591f8dbf4e3	fc6da057177b431fbe6368915fc60807927f9b75	Animal Forest: the translation's build, with code free to grow
+16b0349daa615454bbef753250dde7301cf38626	5bf706abca04dd90c85f0d87f321b29f5fe14a1b	Animal Forest: the layout rule that lets code grow, and the anchor that broke it
+cb426ad0e2454be0e1aa52d40285f4d60b90e029	d6382966c3f6cbc2ffa83c54735808636c927868	Animal Forest: the GameCube script read from the disc and mapped to the cartridge's bank
+eca5819a23280254771f1601fcb4826c5662b9ca	daf22aa92ab2b302f3c9c40ea3bd15c2b76640b5	Animal Forest: the English bank compiled into the ROM, and the first ROM that speaks English
+18da86709a36ef4faffb7ce85ebfbe22fa71ac6e	f3e305f2dd30f0d121d678e351f47ff9b9f028d9	Animal Forest: the choices, the strings and the animals' names in English
+720937397311326fbd9ac0bc38bc79da757766b5	64eaf1d9f063be7bd69e8599b683b662e1184173	Animal Forest: the choice window takes English answers; the route plays to the houses
+181944b8f528eddfde091aba5e0ce068c23b0056	99425472497decefe0c9176c732b73bde0babe81	Animal Forest: dates and times the GameCube's way; the letters surveyed
+666fa3b47f49cbe77a1ac149350838038c6af282	0e5621879b2897f000e5aa888d65a020b9055b18	Animal Forest: the window's fifth line, measured and fixed in the draft
+6d3b03bb1b96081ce8850a02588770ef84dc8be5	7825593740c4dd844399cdfb37ea707652958a4a	Animal Forest: the save code (m_flashrom) in C, matching
+4f070c020d8a5c5ee5a2d30976f2cb88e3a44db2	593ed025e2a5016d607714da632a25a4f73f43dc	Animal Forest: nothing of code moves in RAM; the field's ground drawn right in every town
+5394cf03aafe0e32597e3ecd57fecf064c072b2a	04b555f39a36d7b84bdf04e52af48337e4050ed1	Animal Forest: the save is written compressed, with room for the letters' extension
+dc9d1f55f40d2adc055f751b4593d33cb41c2042	8c704fc5247ed96f50af4ebdf61637d77bdc376f	Animal Forest: the checker warns of free strings the game does not fill
+60fd7f41d8ae38b053d2802997e5179f3e7052c1	f7296bda65c0407d0634baa121cdfced1aee9471	Animal Forest: the letters' banks, both games, read and drafted by number
+8bb54f55e5aa98a1b7275e39e0e18b9776d299c8	f7ce5785fed245cda7d5662a0a8094c13fd42b29	Animal Forest: the villagers' letters sign off with the GameCube's own footers
+74753c6d8079f9dc3be7efd383b9056bc5738667	0c337717258cc8e5007491e98aea0fec695ace19	Animal Forest: the letters' loaders in C, matching the cartridge
+439db64c1a06d263b6543af0f90db2b5e311ed5f	a5da2f05c6e04eb47230385c97858b059ba1f0f3	Animal Forest: the en build's letters from banks of their own, whole
+153b964016345b9782222a0bb96c7f38f037adff	5a64b32a704fbfe1b6356f2203cada9c72f8b350	Animal Forest: the emulator gives the same run twice, across processes
+0f5e4f073c5da115465265a7c0cd0a1864d57464	46029a0639854ab96816dd1dee660bedf75914af	Animal Forest: the rest of each letter kept in the save's extension
+7371e042e3d72e1a5a44f7bcd2be6dd30c9f44e0	d74c3ea6ab6d922ff8dbebfb6c015af120e2accb	Animal Forest: English text drawn at its own width, with the cartridge's glyphs
+c6079629a022efa93047860c0fbff96e5be576c9	7c215e55c58317ace44c732dbba0163897007148	Animal Forest: the English lines laid out to the window's 192 pixels
+de5c22a3cebcc8eb7f750f662c7277543f41313e	1b07953ea37ae7d043bce1afbbe1a90eb6489731	Animal Forest: the letter board in C, and overlays that shrink held in place
+2aa497ba3fe007b09b8e28d9114c83e4f45e2ed4	9980cfd3c61bad731a8dd56b2b480f529c6a716c	Animal Forest: the en letter board draws the whole letter (not yet built)
+83130fcb1fbda3d3499b5e50519970085d5434c5	e498579cb03b340e25e36f8cd776593ef1629fe2	Animal Forest: the letter board seen whole, in the GameCube's letters
+2ed00f9a37183c7f987654af06be38ed29e593d6	68d7c2501d5d5cfb6fe7c822b7c98700593e0293	Animal Forest: the letter editor's line model and the board's cursor in C
+78ba38ae1163aaeda9eaf0b58fa36f40a8d96dff	0d42c92d3f1b2d441d65e973c8a7dff0659712d5	Animal Forest: the board's name box in C (NON_MATCHING), changes rebased
+b6225adf86a3cc0cabe14a882f0b902a089d53cb	0bfd293789d6de9fcca26381354c133df60d46bf	Animal Forest: letters written in the proportional font
+6a357891c3a31ab2491f51ef3dd260b9f994e573	7d4756c07b6d005f1a2cbeea6a6c84efe9a71761	Animal Forest: written letters hold the GameCube's 192-byte body
+5d80350be2f3ebaaef44ad0548ce9bdd04b1dddd	d37b8dbe43887af0db3ce418a9199a075546c292	Animal Forest: the menus' own words, starting with the name entry
+208c586857284e14e30c25a1f656baa01af93c9f	92610409f3b8cb3ea6dec05f57ecc740bae642aa	Animal Forest: the 2010 patch's English labels in the en build's menus
+4dd2d8405eab67fc8db6b2327f06bfb229a644aa	0eb6026231e5bc19223f9299dd927ad0ec7c33b1	Animal Forest: the edit-end check and the address book in English
+9c0ba73d0395d816e1e6991ff94d5e52e55ee2c1	da827450f34ac63f1db62a87959b2f19ab6686b4	Animal Forest: menus' strings swapped where the font draws them
+d6a2e8ad1e09500fc6260da8136b4c662b9e5845	8afd22934aefc2bc7d7fc7a02dca6ec99631341a	Animal Forest: the warnings, the Controller Pak's messages and the gyroid's shop in English
+5518c748fe74dc1601152a45f3c951a2770d8779	bf69743c3750ec697b89e3be5f5dc22eb2ec6e4c	Animal Forest: the tag's words and its throw-away question in English
+8f27397e68b0526ea5711a1f89fee613b837298f	fe845b72cb401374ca6f5780f367a5ec29e3c165	Animal Forest: the swap check keeps one screenshot a menu and data0
+06180721c513ff1504e9072767784f581c978945	3f8624495baf0cff9f9040e9b732aebff46694b7	Animal Forest: the map's labels, a wrapped item's name and the Pak letters' counter in English
+860c7256912aad685dd89157aa191c49329c0626	da3c1e6fc5660d1e12039835af8cfe1c0961a235	Letter's tag in the GameCube's order; tag_ovl in C
+7836c94b5802fe42a6b48830a8e31351caeda941	f5d3b6be3a7dfa5dfa6f57d20a83d234e6fd60e9	Menus: the tag's price window, the board's number and date
+a62f02d338da3b35c43cca67ec8c566bf16c68f3	629ae125f9199687a0f377c226e0e9c264879a0f	Item names: the GameCube's, as tokens the game's own code expands
+b6197d3207a1c57dcf4be9b768e4de5777173018	0f4eec0ffa44a508beb336cdb413831721288d8a	Bulletin board groundwork: the board's text and the posts in C
+6a9fe9feb90543a50d51f88bc24b5060b86f50e1	5926a0d9908bbe4c0f43fede3f5f8ea6667964eb	Bulletin board: posts of 192 bytes, laid out by width
+3b1d5ff0b7f0be8bec78e05a01c6b3ade31e75ea	284e5e2d4801bb2d41ed660018809a11cb132114	Messages the GameCube lacks: the 2010 translation's English, with credit
+a675b894612211ac64cfb7a8ccb9f69cff357fb1	84a7c71c1f57d6a0364b7164482381291093fcc2	The 2010 translation's messages: the cartridge's talk orders put back
+6874f8b517056c064dd0657de1f39e6c95a44e00	1ac1015506c8bc2c9054a606500bf20b6ad56294	Our own English for the 45 messages the 2010 translation changes
+8767ce7ce8b3be8c0f008b6b11febd3980c5605c	067cfec12066c73c8b4a8a0a186722144faa39c5	Our own English for 314 more messages: spares, tests, an early gyroid
+af95c87c1a222376362b476751d00f0f7baed58c	0add0294301d3892f3e1b3c442c7f4ed1e3bcf83	Our own English for 192 early villager greetings
+51444f68d8df41e9f310c72e1d6d3d5fab5ef956	4050e1107f8d33aa46c88752dbde98b185b0bc43	Our own English for the last messages still in Japanese
+bf83d573af68dd8e9c90bcb5e4b5abf2f4bc535d	6c8707f67512ff47c78c342484c69640e839296f	Messages check: all 762 of ours on screen, a page shot once typed out
+1885f593b02faa1c282d374ed382e5fc2d57e775	b4eca5244c393c6a570c5182fb1d204f049f9672	Our own English for the strings and letters still in Japanese
+57e2eb7c4e513e9863633c99e8f03965dd6df944	79b1f6420f0929caf84e2c6f322f0824432b16a6	Board checks: the fringe the boards' resampling shows
+11baf6b04d2fda6a4bf531800931da1f63a085c6	d6165cd7f969693939a4e7b5f629d662634b6b04	Notes: the strings and letters measured on screen
+99bb9c4e06aef4090dd182bf1380b8f4a3ea43b6	6bb9bdcc1e385ef384a89d3075bb1301578b3787	Menus check: the string bank as the game loads it
+cdd1883e2aa4c666cf7bebd4c7ff79a0438e844d	a660132391b7f9151f3eb9b4ea2164f1e14883ad	The deliverable: make bps, a BPS patch from the dump to the en ROM
+b6d603fa925c3d571013e1f11f4ada704720f9b5	e9cbeb85650526b263593ff77b90a6bdbc80e28f	Logo actor: func_80AA0C98_jp in C, matching
+c5a25a666b474c26206d427985cd7eb3d4147782	8582bbd639d2861360f51e1eaf0cdde66e5fbc26	Title logo: the 2010 patch's English logo, taken at build time
+ab17da712572943f4e52b4e7eca427634ca4eb2d	d68ab53afd74ee5c800d749f519cd6a0182047f0	Logo actor: the no-controller warning (func_80AA08E4_jp) in C, matching
+f064c903d0672a535f1287ed0a58c9beb3ae6097	7314e8b647815089dd452c4a82eff9c44b9f9aa4	Title: the no-controller warning in our English
+8eae6fb7a80e73857ff3508c95a36e1f5f74880b	e1e1798ab015e8010f936121e9d12db27c7d31dc	Names longer than 6: tokens, as the items' names
+3142dfb306bac29a2549173b45bb7ab50f82e66c	fec7763494c1358574b263b6cde04e8aa225d2bf	Catchphrases longer than 4: tokens in the string bank
+7f77343a7d2555e3ba6e2bd7df4e5d570b07ef91	343bdbdb72282b3651e532b750975e28b45bc966	The credits and a fish's size seen on screen
+19b7aae98a4adf3c7b62ec1bb82d65d082aa9102	7fcc651215d91c06c6eb1d88a3d9663b2d8b0765	The GameCube's signs on the town's structures, from the disc
+3ac080b0bafce1d10e0e75ed282c6d9d6adcf4d9	f1916b92a5e710f6a2c8ae0db74c97982fc54e4b	The fourth shop's sale banner from the GameCube too
+dcd1df78383937d02a37da9d5411d7be6045a044	4eefdd919967f15634b3c8914748ca0299ba4172	The word textures in English: the town tune, the birthday, the catchphrase window, the letter papers
+00b0c02526af562f8748d4e38ce37e808c6d06c3	607d71ac0a53f90b66dcb62be03b906c774aa11e	The official text with the cartridge's codes, and our English where the GameCube's is its own
+7b4f61dd1ac82af15b5b2fb2e1e145bf083fe85a	d1d080caadb7c581d6c277d8c1901668f7882e1f	The dial's small letters: the editor opens on abc, Z goes on to ABC
+c55e71788a49419486a27970e34a64eb9ded5a21	e4b45562ed394a8a95c3b19c1cdb0fa0c4dd5893	The dial without kana: abc, ABC, the symbols and the digits
+7f3d352cc2a0f32e1a10811ab91a6cb6a3fcdc88	efbae6198652f9a5cdfaa813ec5a7e5936570e12	The player-select actor's answers, and ares as a second emulator
+53d98ab9fd2e1f8ddc217ce5eeb9cc316ceec4bd	d800b84441ff51c07340d3e0236fa9bc9df2df1f	Project64 4.0: the cartridge's two settings, and the logo's colours
+0413808841b55d3f0a89695fd99088da74c76a71	71324f9b00419e638aca4869f3574c7471ab79b4	RetroArch with Mupen64Plus-Next: plays with no settings
+0171035027ed4c72b83f86d27f9aef2783a990fd	4b727d960077283159ccfb4d745f9a9128cfd276	Rosalie's Mupen GUI: plays with its defaults once a controller is set
+161ccf2df799d7aeef46dccdb50a5cf015f1bc6b	07b9d6628b632352e2fc92d4e08906ca61ebff59	README: the long animal names are whole, not cut
+7a01c74df32890466aa4c571b97de7636c32e4b5	254d66c515298e805303aa9b699eb0a7330f19a7	The year's events: December's hang, the stall's answer, the police's dates
+24e44c6c79e2eb6b4e61e4416229bf7aeb0be99c	4098b68a9bde2f613cdf9bd6ac84023064d128cf	The draft no longer carries the cartridge's full stop into the English
+a13d704bd85c1d322eab9ea211cb3982beb2678d	53946effdda6bf22fa7007bb8c943ed4f5c0f0ad	NOTES: the year sweep passes on the final build
+f6f8291ae3be7f97190c844c9a601c594a4432d3	7f1cc0f1ed0b186fee6e4b7bba4ce59db719f19e	Our own signs: the stall, the police board, the tourney HQ and the fortune stall in English
+e5eb35c5a855a458c61279ffc963587dbef230f2	30f3b7d46d66379bfba5c9097a1ad5f6079e2fd1	The text review: questions for the cartridge's answers, its facts, its empty slots
+ecf5de30f0ae5d30da23e96507f4f31af444da76	98f7fc68d84eaf4bed790a919cdefb64c039057b	af_nafe_text: a message with no text is not one to translate; the disk system's lines
+a8e97fe85ed0fba58176f43b0c8f9c2f353f847c	43742c2989db45f862e0d612d1d1833f2e6b1263	NOTES: the text review's checks on the final build
+ee1396cc108da733ec8ebea662ab33540e88854f	e1d526f1e81da9ce1f923f85a464879ba8c3d608	The playthrough's fixes: text, the police box's posters, the furniture's words
+064f21a1cc41644aa332cea3bc5f28bf8b2fcfa4	3cdd842b375bd2075b1b01946c1f7ee1c6b1b962	NOTES: the playthrough's build and its checks
+4ab4ed32135ed89d0b7491959ae3237dda150212	da272e199eae7462ca68355d339f25fdf2e21627	The second review's fixes: cut strings, Resetti, a birthday's date, names, memory
+e27921a2b0ee9d1be29bc7b56c2091b69ca1e226	19d0c32a3a7c55a4a183daeb019f1acd27776ade	NOTES, README, CLAUDE: the second review, its figures and its checks
+738c50697d18dedf545e4c5383b57eb08a893184	2b96e5f0b38b50e321c3ca875eea550baeed95ba	emu_resetti: Mr. Resetti's phrases typed on the dial and judged by his own code
+d1710e4f50f4ffd0646b4d8db86d44b2d505b141	7653891941799e8f2baf4a7d79952c79716e220b	CI: the emulator's build needs nasm
+825c89ae3ca82678eda4b0e9b36890b5d80cc2f4	3d9e535e84d5f579f657c2f52844c37031fcd060	NOTES, README, CLAUDE: the CI that had never passed; the checks on the rebuilt emulator
+ea5859ce76e0c2fdaa3375b6c52c035e56f2765c	04fe068ff542f06bce3f4fdda3bb5d4e9d3e5b6e	Whole words where the cartridge's code loads 10 bytes; safer insults; whole names
+f7166e181afdc1cc1ea105ddfdb0a2950d0270c0	1b5164f1023ab452361597d802fe596988d955a2	What the second review left open: a full town's memory, Resetti by the game's road, the policeman's name
+019d694e74989e0d11624d78ad30065bb3d475a3	bd7a08e1e4c147e97c0df9f4e5473c74f4d34fe3	The last look: what really comes out of the arena, the title's demos, special-names reads its include
+92a87547cc62ac2a1fbe7f01b57c0c302ec1cbef	a71caabccc09962ffd3dd2f5c16f6bdb361811d7	The closing pass: every way into a block, every actor made, the rooms a day does not reach, the signs inside the shops
+69720cfe0e34eef0e56dfc015ab68139fb1d711d	adb837a2b6d35677cba6e5eb8ff8972262fc1ff2	The tents in the order a town's save allows
+21ddd23b8baf32c01f16bd3989053a4b1c91f9c5	38d2b922e2caa389166a0c840d558360a4fe507c	A player who comes later, and every way in on every date of snow
+12794d21fbdd9b750f06275fd44516956a114bc5	0b6014329688ba527b89bef99b015b499734a82b	The first job played with the pad; the board's notice names the cartridge's buttons
+9f88cd9d889203a0ebf0078d4e5b2586462eba0c	4dd8ef4c356495ebb916b0a0d29411bc5bf337f2	A trip with the Controller Pak, played; a traveller's letters keep their rests
+105f337fde2bf9c93b028bdf91b71489bc85c094	286407429f7a3e1f4fc5d46393a7d6ca9e0c7f9c	The letters the animals keep hold their rests too (in trial)
+8c098db0ff10724da4cea9bb067034faa2e62109	ed014d6d8ac3e327433735d185b3b5750485f059	The letters on the Controller Pak keep their rests too
+66e86cafbd4b87581b9a4af0d2e083c20bbc4d97	ef76efb19814be9413f5a13c90589cf91b646f3f	Two checks mended after the battery: the gyroid tried again, and two messages counted as ours
+990f214101b881cad157ab6ddeb493d11e47888a	2635941d682ddcb0701f7c5a0845e3750cfc9c29	The closing pass's battery: every goal passed on the delivered ROM
+7022b1e7f8d19047e1036f7a38bae0d1f6e3e588	572a187453bd381468898bcc752a72a24ae7b241	README: the clerk's answer by its place, not its words
+fb899f3588b46698204c1dbdfa03f2938d86d012	118143fa8215c5162377f03efc1012ac9378770f	NOTES: the Controller Pak's mark and an earlier build of the translation
+2040f5dfcb5a12396ba32d13056ee047bfcc3c84	9119e0b0518f420316e32628478f6c54cb3a4239	The NES: the GameCube's model for the cartridge's eight Famicoms
+4350d5d47ef19faa8d59727124dc7e3c5ab5a33d	1988479ca4321a57734a6c23967bcd6431fec843	The checks' towns keep the letters' extension; a letter the game delivered goes to the Pak
+24d0668c60c50ca1930af08fa1b37bc68ff115a0	56080870f3fdbd37ac1ef98cb5f92c0c6f7958b8	The animals' errands, played to their ends
+f203865a2e1ed41827757b8a1244eef638b70970	404d3913afbbdfefb22d0ddf670cc7dec24bc667	The tools, played: a fish, an insect, a hole and a tree
+c3bce36c4ff46623c0f83857748885d819647938	4a81f50e8dba84583f4d5752c275407df8258fe3	The town's dealings played; a letter whole in another town; the store's own words
+42e1342b5238ffee0bb7cb13c201e0f68325afea	55f64d682c3efacafe12d8002ed56a39a6f45115	The trip's second letter has a text of its own; the trip and the Pak's checks pass
+e2319bc446eba56fb4127b817567d4d775839740	7cb0aabf5d9d6239b12556d6ab85787a10374bee	The drive's piece is named for what is drawn: an empty NES
+a9507a353efc947f19280ba21b7a63ab54a50498	fd1ce92ad10a6622fffe6acfa5b474ce8451d2f4	NOTES: the GameCube's piece for the drive is its 893rd, by its table of profiles
+ef0088fd9c12e732ebe45daec7896cc270aabb2d	407f6e5f32be02f791689283d8813f72cb43ae2d	A letter left in another town's store comes home whole
+77c06901c099c6803250da4c4fdf5bfe66cfb827	91f798ccf23be0eade0839baed2fb2e320debc9b	The letters' check prints both towns' names by choice, not by the game's draw
+5c4266521ca82af4c87332008d09c49faf55a6cc	63bbeaae4566620b313d8b48aa0fa4f9d97bd172	CLAUDE.md: a check that asks the draw for a rare thing
+bd2909aaca22cc8c2b4e78a487dcd5583fedaa52	c931f149ad6108565b99e0a3dffc254256de25e6	The first job's check: a pocketbook with less than the payment it sets
+c341306b9a5e722b5500277391210101e4ec60d2	a7b077fced447c7f2d126ebdd8e8d46d4ef98bfd	NOTES: the battery after the dealings (all but the memory check, which runs)
+3b95fc6d11e338b39578e5637d8a1af78458e35e	bba48dde2e7ebfaf0f728147694fe7ea25d6f997	README: the battery after the last things played, and the trip's second trip
+aa27ccb4f65b222c207af8114204317630de039f	286dc7b900672f61c851a0d111ec6befa1cd550e	The battery after the dealings: the arena on the delivered build, and the patch

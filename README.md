@@ -1243,3 +1243,8 @@ pruebas se fabricaban con ellos ya recorridos (o nunca salían de ellos).
   `emu_reset.py` (Resetti por el camino del juego) y `emu_memory.py` (la
   memoria en un pueblo lleno y en interiores).
 - `reference/NOTES.md` — lo verificado, con su fuente.
+- `reference/commits-before-the-move.tsv` — el proyecto nació como una
+  carpeta en otro repositorio y se mudó a este con su historia: los 122
+  commits de entonces, rehechos con esa carpeta como raíz. Son los mismos
+  ficheros, autores, fechas y mensajes, pero el hash de cada commit es
+  otro; este fichero dice cuál era y cuál es (NOTES, "The repository").

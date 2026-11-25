@@ -5069,7 +5069,7 @@ What "The rooms a day does not reach", "The first job", "A trip, played"
 and "The last notes without a source" leave to this section: every check
 on the tree that ends the pass, each a goal of one make.
 
-- **The battery.** On the commit `8c098db`, 21 goals of one make, three
+- **The battery.** On the commit `ed014d6`, 21 goals of one make, three
   at a time (`make -k -j3 -Otarget`), the ROM md5 0aa2f8617196...
   (the same bytes at each of its three builds).
   Nineteen passed: `test` (139 tests), `verify` (the matching build is
@@ -5108,7 +5108,7 @@ on the tree that ends the pass, each a goal of one make.
   taken and 1,073 of ours, every one in the bank as its file's message
   laid out. Its other checks had passed (728 messages shown, 2,030
   lines measured).
-- **The four run again.** On `66e86ca` (the two checks mended, and the
+- **The four run again.** On `ef76efb` (the two checks mended, and the
   trip's words on the Pak's file; the ROM the same, md5
   0aa2f8617196...), as goals of one make, four at a time: `test` (140
   tests); `memory-check-en`, its 103 checks, the chain of shops whole
@@ -5121,7 +5121,7 @@ on the tree that ends the pass, each a goal of one make.
   that were not run again (resetti, words, year): by its syntax tree
   only its `main` and its docstring differ from the battery's, and
   none of them calls it. So every goal of the battery has passed on
-  this ROM, nineteen on `8c098db` and the two mended on `66e86ca`.
+  this ROM, nineteen on `ed014d6` and the two mended on `ef76efb`.
 - **The delivered build's arena.** From that last run of the memory
   check, the town of 4 players and 15 animals: on the 21 tours the
   largest free block is 64,512 bytes at its least (New Year's Day,
@@ -5576,7 +5576,7 @@ Pak and the cartridge itself", "The NES" and the last points of "A
 trip, played" leave to this section: every check on the build that ends
 them.
 
-- **The build.** The ROM is `ef0088f`'s, md5 9cfc5c10e428...; the
+- **The build.** The ROM is `407f6e5`'s, md5 9cfc5c10e428...; the
   commits after it change checks and notes. It has the rests on the
   Controller Pak, the list of the keys a traveller leaves with, the
   store's own words and the drive's name; `code_en` is 0xC600 bytes.
@@ -5586,12 +5586,12 @@ them.
   and keeping the disk. So the goals ran as five makes of a few each
   (`make -k -j3 -Otarget`), the short ones first once the restarts were
   known, and a goal a restart cut was given to a later make. On
-  `ef0088f`, sixteen goals: fourteen passed, the letters' failed
+  `407f6e5`, sixteen goals: fourteen passed, the letters' failed
   (below) and the messages' was cut by a restart at its message 2958.
   A make of six was cut whole by the next restart, 55 minutes in,
-  before any of its long goals had ended. On `5c42665` (the letters'
+  before any of its long goals had ended. On `63bbeaa` (the letters'
   check mended), seven: six passed, the first job's failed (below). On
-  `bd2909a` (that check mended), the four long ones left, all passed,
+  `c931f14` (that check mended), the four long ones left, all passed,
   and then the unit tests again with the memory check. Each make built
   the ROM anew at its head, the same bytes each time. The two commits
   between change `tests/emu_letters.py`'s `main` and
@@ -5863,6 +5863,26 @@ them.
   angrylion and ares draw it green: those shots were of different
   demos.)
 
+## The repository
+
+The project began as a directory, `animal_forest_en/`, on a branch of
+another repository (EM-87/Jeffrey_paradox, `claude/vigilant-johnson-hxmbst`)
+and moved to this one with its history: 122 commits, each made again
+with that directory as the root and the workflow where it was
+(`.github/workflows/`), the first of them with no parent. Held to the
+old ones one by one before the old branch was removed: the same tree
+(the directory's there, the root's here), the same workflow, author,
+committer, dates and message, the same order; and every blob and tree
+of the old commits' project is among this repository's objects. Nothing
+outside that directory and the workflow was changed by those commits.
+
+A commit's hash is another here. `reference/commits-before-the-move.tsv`
+has the old hash and the new of each of the 122. These notes name
+commits by the hashes they have here; the messages of the commits
+before the move name five by the old ones (the map has them), and a
+patch made before the move carries the old hash of its commit in its
+metadata.
+
 ## The patch (the deliverable)
 
 - **`make bps`** writes `build/animalforest-en.bps`, the en ROM as a BPS
@@ -5871,7 +5891,7 @@ them.
   `tools/bps.py apply` does. The source's runs are found wherever the en
   build put them (its 32 bytes indexed at every 16th offset, the target
   looked up at every offset not yet covered, each hit grown both ways),
-  the rest written as it is. For the ROM of 11baf6b's tree: 3,116,598
+  the rest written as it is. For the ROM of d6165cd's tree: 3,116,598
   bytes for 25,165,824 (6,718,435 read in place from the dump, 15,335,399
   copied from elsewhere in it, 3,111,990 new), made in 1.4 s; applied to
   the dump it gives the en ROM byte for byte (md5 0639929805be...),
