@@ -46,7 +46,7 @@ OUT_ROM  := $(BUILD)/animalforest-match.z64
 EN_ROM   := $(BUILD)/animalforest-en.z64
 NAFE_ROM := $(BUILD)/nafe-2010-12-02.z64
 
-.PHONY: all bps baserom decomp rom verify decomp-patch decomp-tools decomp-en rom-en emu-check-en route-en save-check-en letters-check-en board-check-en write-check-en resetti-check-en words-check-en notice-check-en messages-check-en menus-check-en signs-check-en psel-check-en year-check-en reset-check-en memory-check-en job-check-en trip-check-en tools-check-en deals-check-en pak-jp-check-en emu-determinism decomp-patch-en emu emu-check ares ares-route-en nafe nafe-diff test clean distclean script drafts
+.PHONY: all bps dist baserom decomp rom verify decomp-patch decomp-tools decomp-en rom-en emu-check-en route-en save-check-en letters-check-en board-check-en write-check-en resetti-check-en words-check-en notice-check-en messages-check-en menus-check-en signs-check-en psel-check-en year-check-en reset-check-en memory-check-en job-check-en trip-check-en tools-check-en deals-check-en pak-jp-check-en emu-determinism decomp-patch-en emu emu-check ares ares-route-en nafe nafe-diff test clean distclean script drafts
 
 all: verify
 
@@ -450,6 +450,26 @@ en-bank: $(EN_ASSETS)/msg_text.bin $(EN_ASSETS)/mail_text.bin $(EN_NAMES) $(EN_F
 bps: rom-en
 	$(PYTHON) tools/bps.py create $(BASEROM) $(EN_ROM) $(BUILD)/animalforest-en.bps \
 		--metadata "animal_forest_en $$(git rev-parse --short HEAD 2>/dev/null)"
+
+# The release's files, in build/dist (never committed: they hold what the patch holds). The .bps under the
+# version's name; the same .bps sealed with the disc's own files and the 2010 patch's (tools/af_patch.py: it
+# opens for whoever has them and for nobody else); the sealed one opened again from build/gc's copies and
+# held to the ROM; and a manifest of sizes and hashes. NAFE_UPS=: the 2010 patch's file, when the build used
+# it (NOTES, "The patch (the deliverable)").
+VERSION ?= 1.0
+DIST := $(BUILD)/dist
+DIST_NAME = animalforest-en-v$(VERSION)
+DIST_LABEL = Animal Forest (N64) in English v$(VERSION), commit $$(git rev-parse --short HEAD 2>/dev/null)
+SEAL_FILES = $(GC_FILES) foresta.rel.szs foresta.map
+dist: bps
+	@test ! -s $(NAFE_ROM) || test -n "$(NAFE_UPS)" || { echo "make dist NAFE_UPS=path/to/NAFE-WIP-2_12_2010.ups (the build used the 2010 patch)"; exit 1; }
+	@test -s $(GC_DIR)/foresta.rel.szs || { echo "make dist: build/gc has no copy of the disc's files (make script ISO=...)"; exit 1; }
+	mkdir -p $(DIST)
+	$(PYTHON) tools/bps.py create $(BASEROM) $(EN_ROM) $(DIST)/$(DIST_NAME).bps --metadata "$(DIST_LABEL)"
+	$(PYTHON) tools/af_patch.py seal $(BASEROM) $(DIST)/$(DIST_NAME).bps $(DIST)/$(DIST_NAME).afp --label "$(DIST_LABEL)" \
+		$(foreach f,$(SEAL_FILES),--disc $(f)=$(GC_DIR)/$(notdir $(f))) $(if $(NAFE_UPS),--ups "$(NAFE_UPS)")
+	$(PYTHON) tools/af_patch.py verify $(BASEROM) $(DIST)/$(DIST_NAME).afp $(EN_ROM) --files $(GC_DIR) $(if $(NAFE_UPS),--ups "$(NAFE_UPS)")
+	$(PYTHON) tools/af_patch.py manifest $(BASEROM) $(DIST)/$(DIST_NAME).bps $(DIST)/$(DIST_NAME).afp $(DIST)/$(DIST_NAME).txt
 
 rom-en: decomp-en rom en-bank
 	cd $(AF_EN_DIR) && $(PYTHON) $(CURDIR)/tools/af_relsyms.py $(CURDIR)/$(REF_MAP) linker_scripts/jp/auto/undefined_syms_auto.ld

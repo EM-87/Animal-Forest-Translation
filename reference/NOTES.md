@@ -6028,3 +6028,38 @@ metadata.
   build took from the user's copies (the GameCube's script and font, the
   2010 patch's labels and messages), as the ROM does: it is for the
   user's own use, and never enters the repository (`build/`).
+- **Version 1.0.** The user took the ROM `ff8c3a5` makes (md5
+  52c6b4fbadb0..., "The shrine and two paintings") as good: the tag
+  `v1.0`. `make dist NAFE_UPS=...` writes the release's files into
+  `build/dist`, none of them committed: the `.bps` under the version's
+  name with the version and the commit in its metadata (3,231,886
+  bytes), a sealed patch and a manifest (both ROMs' sizes and hashes,
+  both patches', and each file of the seal with its place on the disc,
+  its size and SHA-256).
+- **The sealed patch** (`tools/af_patch.py`, `.afp`). A `.bps` gives
+  the ROM to anyone who has the dump, and 3.2 MB of it are what the
+  build made of the disc and of the 2010 patch. The sealed patch is
+  that `.bps` with every byte crossed with a keystream: block i's 32
+  bytes are the SHA-256 of a salt (from the patch's own hash), i and a
+  window of 1,024 bytes of the sealing files, the window's place
+  moving through all of them (i times a large odd number, in their
+  length). The sealing files are the ones the build reads from the
+  disc (the 23 bank files inside `forest_1st.arc` and
+  `forest_2nd.arc`, `foresta.rel.szs`, `foresta.map`: 25 files, 14.1
+  MB) and the 2010 patch's file. No password and no hash opens it, since every
+  block wants bytes of the files themselves: it is for someone who has
+  the cartridge's dump, the same disc (GAFE01 revision 0) and the same
+  patch. The header, in the clear, names each file with its size and
+  SHA-256, so that the patcher can say which input is another, and
+  both ROMs' MD5. `apply` reads the files from a plain disc image
+  (`--iso`, through `tools/gciso.py`) or from a directory that has
+  them (`--files`), checks each before anything is opened, the `.bps`
+  under the seal against its SHA-256 and the ROM made against the MD5
+  it was sealed for; a plain `.bps` goes through it as it is. Opened
+  with the user's own image and patch file it gives the ROM byte for
+  byte, in a second and a half; without the patch file, or without
+  the image, it refuses by name. `make dist` opens it again from
+  build/gc's copies and holds it to the ROM before the manifest is
+  written. It is still a copy of that material, under a seal: whether
+  one is handed on is the user's to decide, and nothing here
+  distributes one.

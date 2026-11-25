@@ -1,8 +1,10 @@
 # Working in this repository (animal_forest_en)
 
 An English translation of Doubutsu no Mori (N64) built by recompiling the
-game from zeldaret/af, not by hex-patching the ROM. Read `README.md` for
-the why and the state, `reference/NOTES.md` for what is verified.
+game from zeldaret/af, not by hex-patching the ROM. Read `README.es.md`
+(Spanish, long) for the why and the state, `reference/NOTES.md` for what is
+verified; `README.md` is the short English face of the project, `LICENSE`
+and `NOTICE.md` say what is ours to license and what is not.
 
 ## Ground rules
 
@@ -21,7 +23,9 @@ the why and the state, `reference/NOTES.md` for what is verified.
    theirs), our own translation, and hashes (an md5 of a frame is a check,
    not a copy). The official GameCube script and art are read from the
    user's disc at build time, on their machine. The deliverable is a
-   `.bps` patch against the user's own dump.
+   `.bps` patch against the user's own dump; `make dist` names it by its
+   version and seals a copy with the disc's own files
+   (`tools/af_patch.py`), and neither enters the repository.
 
 3. **Recompile, don't patch.** A change to the game is a change to the
    decomp's source, kept as a patch in `decomp/patches/` (in order, applied
@@ -234,6 +238,12 @@ the why and the state, `reference/NOTES.md` for what is verified.
   tile at its TMEM address, texels and palette md5s, the texture block's
   LoadBlock row swap undone and redone (NOTES, "Our own furniture
   words").
+- `tools/af_patch.py` — the patcher (standard library only): applies a
+  `.bps` or a sealed patch (`.afp`: the `.bps` crossed with a keystream
+  drawn from the bytes of the disc's files and of the 2010 patch, so that
+  those files open it and nothing shorter does), checks every input by
+  its hash and the ROM made by its MD5; `seal`, `verify` and `manifest`
+  are what `make dist` runs (NOTES, "The patch (the deliverable)").
 - `tools/af_gc_models.py` — the GameCube's models held to the
   cartridge's, vertex by vertex (local, prints only): each piece of
   furniture against the GameCube's piece its name comes from, and every

@@ -19,7 +19,7 @@ Antes de tocar nada, leé en este orden:
    mirar la pantalla en el emulador determinista) y las trampas del
    emulador.
 2. `reference/NOTES.md` — lo verificado y cómo.
-3. `README.md` — estado y comandos.
+3. `README.es.md` — estado y comandos (`README.md` es la presentación corta en inglés).
 
 Los archivos que no están en el repo (hay que pedirlos): el volcado de
 Doubutsu no Mori (`make ROM=...` una vez), el disco de Animal Crossing USA

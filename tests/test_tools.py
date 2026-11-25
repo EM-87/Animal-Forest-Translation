@@ -43,6 +43,7 @@ import af_text  # noqa: E402
 import af_items  # noqa: E402
 import af_ui  # noqa: E402
 import af_gc_models  # noqa: E402
+import af_patch  # noqa: E402
 import af_gc_nes  # noqa: E402
 import af_gc_signs  # noqa: E402
 import af_menu_tex  # noqa: E402
@@ -1998,6 +1999,52 @@ class MenusWords(unittest.TestCase):
         # for: ours, each another name
         self.assertLessEqual({("ftr", 172), ("ftr", 173), ("ftr", 884)}, set(own))
         self.assertEqual(len({text for text, _ in own.values()}), len(own))
+
+    def test_a_sealed_patch_opens_with_its_files_only(self):
+        # tools/af_patch.py: a .bps crossed with a keystream drawn from the files it is sealed with
+        rng = random.Random(7)
+        source = bytes(rng.randrange(256) for _ in range(4096)) * 4
+        target = source[:5000] + b"English" * 300 + source[5000:]
+        patch, _ = bps.create(source, target, b"a test")
+        disc = bytes(rng.randrange(256) for _ in range(3000))
+        ups = bytes(rng.randrange(256) for _ in range(1500))
+        keys = [("disc", "a.arc/b.bin", disc), ("ups", "x.ups", ups)]
+        sealed = af_patch.seal(source, patch, keys, "a label")
+        have = {"a.arc/b.bin": disc, "x.ups": ups}
+        self.assertEqual(af_patch.apply(source, sealed, lambda key: have[key["name"]]), (target, "a label"))
+        # sealed again it is the same bytes, and nothing of the .bps is in it in the clear
+        self.assertEqual(af_patch.seal(source, patch, keys, "a label"), sealed)
+        self.assertNotIn(b"English" * 4, sealed)
+        self.assertNotIn(patch[100:164], sealed)
+        head, body = af_patch.header(sealed)
+        self.assertEqual([(k["from"], k["name"], k["size"]) for k in head["keys"]],
+                         [("disc", "a.arc/b.bin", 3000), ("ups", "x.ups", 1500)])
+        self.assertEqual(len(body), len(patch))
+        # another file, a damaged body, another ROM, no files: each refused
+        other = dict(have, **{"x.ups": ups[:-1] + bytes([ups[-1] ^ 1])})
+        with self.assertRaises(ValueError):
+            af_patch.apply(source, sealed, lambda key: other[key["name"]])
+        with self.assertRaises(ValueError):
+            af_patch.apply(source, sealed[:-20] + bytes(20), lambda key: have[key["name"]])
+        with self.assertRaises(ValueError):
+            af_patch.apply(source[1:] + b"\0", sealed, lambda key: have[key["name"]])
+        with self.assertRaises(ValueError):
+            af_patch.apply(source, sealed, af_patch.fetcher())
+        with self.assertRaises(ValueError):
+            af_patch.seal(source, patch, [], "nothing to seal with")
+        # a plain .bps goes through as it is
+        self.assertEqual(af_patch.apply(source, patch), (target, None))
+        # the keystream: as long as asked, another key in every block, and no seal from fewer bytes than a window
+        stream = af_patch.keystream(disc, b"salt", 100)
+        self.assertEqual(len(stream), 100)
+        self.assertNotEqual(stream[:32], stream[32:64])
+        self.assertEqual(af_patch.cross(af_patch.cross(b"abc", stream[:3]), stream[:3]), b"abc")
+        with self.assertRaises(ValueError):
+            af_patch.keystream(b"short", b"salt", 10)
+        # the manifest names both ROMs, both patches and each file of the seal
+        text = af_patch.manifest(source, patch, sealed)
+        for want in ("a label", rom.md5(source), rom.md5(target), "a.arc/b.bin", "x.ups"):
+            self.assertIn(want, text)
 
     def test_models_are_compared_by_their_vertices_without_the_flag(self):
         # tools/af_gc_models.py: a vertex of the GameCube's is the cartridge's but for bytes 6 and 7
