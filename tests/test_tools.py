@@ -1804,7 +1804,8 @@ class MenusWords(unittest.TestCase):
         self.assertEqual((src("ftr", 0), src("ftr", 490)), (("ftr", 0), ("ftr", 490)))
         self.assertEqual((src("ftr", 491), src("ftr", 745)), (("cloth", 0), ("cloth", 254)))
         self.assertEqual((src("ftr", 746), src("ftr", 778), src("ftr", 810)), (("ftr", 754), ("ftr", 794), ("ftr", 834)))
-        self.assertEqual((src("ftr", 842), src("ftr", 848), src("ftr", 849)), (("ftr", 893), ("ftr", 893), None))
+        # the seven Famicoms: the GameCube's first seven games' pieces; the disk drive: its NES, after its 19
+        self.assertEqual((src("ftr", 842), src("ftr", 848), src("ftr", 849)), (("ftr", 874), ("ftr", 880), ("ftr", 893)))
         self.assertEqual((src("ftr", 850), src("ftr", 946)), (("ftr", 894), ("ftr", 990)))
         self.assertEqual(src("etc", 13), ("money", 0))
         # a placeholder in the GameCube's table is no name; an accented small letter in one is

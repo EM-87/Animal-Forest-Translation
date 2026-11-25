@@ -28,8 +28,9 @@ once for each way it faces), and the en table follows that order, densely. The G
 (itemName_* and ftrName_table in dataobject.obj, itemArt_* and ftrArt in m_item_name.o) hold the same
 kinds in the same order with items of its own added, so a name is the GameCube's at the same index,
 except for the plants (a sapling the GameCube added second: PLANT_SHIFT) and the furniture after the
-clothes (blocks the GameCube grew: FTR_BLOCKS, and the cartridge's Famicoms, which all have one name:
-FTR_SAME). Where the GameCube has no name for the cartridge's item (a placeholder in its table, or an
+clothes (blocks the GameCube grew: FTR_BLOCKS; the cartridge's seven Famicoms are the first seven of the
+GameCube's games' pieces, each named after its game, and the cartridge's disk drive the piece after
+them, its NES). Where the GameCube has no name for the cartridge's item (a placeholder in its table, or an
 item of the cartridge's own), or names another thing than the cartridge's item is (one it drew anew under
 the same number), ours from script/items.txt (`kind index<TAB>name`, article in OWN_ARTICLE form
 `a|an|the|some|-`), else the cartridge's own name and a warning.
@@ -113,9 +114,10 @@ GC_NAMES_OBJ, GC_ARTS_OBJ = "dataobject.obj", "m_item_name.o"
 PLANT_SHIFT = 1                             # the plants after the first: the GameCube's next index
 # the furniture: (first, end, what the GameCube's index adds) after the clothes, where the GameCube put its
 # mannequins (8), then more insects (8), fish (8) and umbrellas' own patterns (8), and after the cartridge's
-# Famicoms (7, one name: FTR_SAME) and its disk drive (ours), more games
-FTR_BLOCKS = [(0, 746, 0), (746, 778, 8), (778, 810, 16), (810, 842, 24), (850, 947, 44)]
-FTR_SAME = {i: 893 for i in range(842, 849)}
+# Famicoms (7: the first seven of its nineteen games' pieces, each named after its game) twelve games more,
+# then the piece the cartridge's disk drive became, its NES with no game (its table of profiles has the
+# drive's there: NOTES, "The NES")
+FTR_BLOCKS = [(0, 746, 0), (746, 778, 8), (778, 810, 16), (810, 842, 24), (842, 849, 32), (849, 947, 44)]
 # names the cartridge keeps under another kind: the clothes it shows as furniture (mRmTp_FtrItemNo2Item1ItemNo
 # turns them into the clothes before a name is read, as it does the insects, fish and umbrellas: their
 # furniture names are never read, and the GameCube's table has none for seven of the clothes'), and a bag of
@@ -200,8 +202,6 @@ def gc_source(kind, i):
     if kind == "ftr":
         if FTR_CLOTH[0] <= i < FTR_CLOTH[1]:
             return "cloth", i - FTR_CLOTH[0]
-        if i in FTR_SAME:
-            return kind, FTR_SAME[i]
         for first, end, add in FTR_BLOCKS:
             if first <= i < end:
                 return kind, i + add
